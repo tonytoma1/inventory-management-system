@@ -3,25 +3,25 @@ package com.tony.inventory.management.data.entity;
 import javax.persistence.*;
 
 /**
- * Represents the category table in the database.
+ * Represents the category table in the database
  */
 @Entity
-@Table(name="category")
+@Table(name = "CATEGORY")
 public class Category {
 
     @Id
-    @Column(name="category_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    public int categoryId;
+    @Column(name = "CATEGORY_ID")
+    private Integer categoryId;
 
-    @Column(name="category_name")
-    public String categoryName;
+    @Column(name = "CATEGORY_NAME")
+    private String categoryName;
 
-    public int getCategoryId() {
+    public Integer getCategoryId() {
         return categoryId;
     }
 
-    public void setCategoryId(int categoryId) {
+    public void setCategoryId(Integer categoryId) {
         this.categoryId = categoryId;
     }
 

@@ -6,31 +6,32 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
-import java.util.stream.Stream;
 
-/**
- * Retrieves categories from the category table.
- */
 @Service
 public class CategoryService {
 
-    CategoryRepository categoryRepository;
+    private CategoryRepository categoryRepository;
 
     @Autowired
     public CategoryService(CategoryRepository categoryRepository) {
         this.categoryRepository = categoryRepository;
     }
 
+    /**
+     * Returns all of the categories in the database
+     */
     public List<Category> getAllCategories() {
-        Iterable<Category> categoryIterator = categoryRepository.findAll();
-        List<Category> categories = new ArrayList<Category>();
+        List<Category> cat = new ArrayList<>();
+        categoryRepository.findAll().forEach(x -> cat.add(x));
 
-        categoryIterator.forEach(x -> categories.add(x));
-
-        return categories;
-
+        return cat;
     }
 
+    /**
+     * Saves the category into the database
+     */
+    public void saveCategory(Category category) {
+        categoryRepository.save(category);
+    }
 }

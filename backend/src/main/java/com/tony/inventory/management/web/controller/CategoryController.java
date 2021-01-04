@@ -2,18 +2,15 @@ package com.tony.inventory.management.web.controller;
 
 import com.tony.inventory.management.business.service.CategoryService;
 import com.tony.inventory.management.data.entity.Category;
+import com.tony.inventory.management.data.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Stream;
 
-/**
- * RPC that returns JSON objects of the category table
- */
 @RestController
-@RequestMapping("/category")
+@RequestMapping("/api/category")
 public class CategoryController {
 
     private CategoryService categoryService;
@@ -23,26 +20,13 @@ public class CategoryController {
         this.categoryService = categoryService;
     }
 
-    /**
-     * @return all categories in the category table
-     */
     @GetMapping
     public List<Category> getAllCategories() {
-        List<Category> cat = categoryService.getAllCategories();
-
-        return cat;
+        return categoryService.getAllCategories();
     }
 
-    @GetMapping(path = "{categoryId}")
-    public Category getCategoryById(@PathVariable("categoryId") int categoryId) {
-       List<Category> categories = categoryService.getAllCategories();
-
-       for(Category category : categories) {
-           if(category.getCategoryId() == categoryId) {
-               return category;
-           }
-       }
-       Category cat = null;
-       return cat;
+    @PostMapping
+    public void saveCategory(@RequestBody Category category) {
+        categoryService.saveCategory(category);
     }
 }
