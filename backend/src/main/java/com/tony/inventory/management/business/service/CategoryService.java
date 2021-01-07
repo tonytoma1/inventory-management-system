@@ -8,6 +8,11 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Retrieves data from the category table in the database
+ * @author Tony Toma
+ *
+ */
 @Service
 public class CategoryService {
 
