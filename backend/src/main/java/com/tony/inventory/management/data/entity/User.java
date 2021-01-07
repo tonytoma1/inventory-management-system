@@ -22,15 +22,61 @@ public class User {
     @Column(name = "password")
     private String password;
 
+    @Column(name="is_account_non_expired")
+    private Integer isAccountNonExpired;
+
+    @Column(name = "is_credentials_non_expired")
+    private Integer isCredentialsNonExpired;
+    
+    @Column(name = "is_account_non_locked")
+    private Integer isAccountNonLocked;
+
+    @Column(name = "is_enabled")
+    private Integer isEnabled;
+
     @ManyToOne
     private Role role;
 
     public Role getRole() {
         return role;
     }
+    
+	public Integer getIsAccountNonLocked() {
+		return isAccountNonLocked;
+	}
 
-    public void setRole(Role role) {
+	public void setIsAccountNonLocked(Integer isAccountNonLocked) {
+		this.isAccountNonLocked = isAccountNonLocked;
+	}
+
+
+
+	public void setRole(Role role) {
         this.role = role;
+    }
+
+    public Integer getIsAccountNonExpired() {
+        return isAccountNonExpired;
+    }
+
+    public void setIsAccountNonExpired(Integer isAccountNonExpired) {
+        this.isAccountNonExpired = isAccountNonExpired;
+    }
+
+    public Integer getIsCredentialsNonExpired() {
+        return isCredentialsNonExpired;
+    }
+
+    public void setIsCredentialsNonExpired(Integer isCredentialsNonExpired) {
+        this.isCredentialsNonExpired = isCredentialsNonExpired;
+    }
+
+    public Integer getIsEnabled() {
+        return isEnabled;
+    }
+
+    public void setIsEnabled(Integer isEnabled) {
+        this.isEnabled = isEnabled;
     }
 
     public Integer getUserId() {
